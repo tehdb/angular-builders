@@ -1,5 +1,5 @@
 {
-  "name": "@angular-builders/jest",
+  "name": "angular-jest-builder",
   "version": "10.0.1",
   "description": "Jest runner for Angular build facade. Allows ng test run with Jest instead of Karma",
   "repository": {

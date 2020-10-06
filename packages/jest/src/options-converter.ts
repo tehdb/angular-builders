@@ -1,10 +1,22 @@
 import { SchemaObject as JestBuilderSchema } from './schema';
 
 export class OptionsConverter {
+  private convertAliases(option: string) {
+    if (option === 'codeCoverage') {
+      return 'coverage';
+    }
+
+    return option;
+  }
+
   convertToCliArgs(options: Partial<JestBuilderSchema>): string[] {
     const argv = [];
-    for (const option of Object.keys(options)) {
+
+    for (let option of Object.keys(options)) {
       let optionValue = options[option];
+
+      option = this.convertAliases(option);
+
       if (optionValue === true) {
         argv.push(`--${option}`);
       } else if (typeof optionValue === 'string' || typeof optionValue === 'number') {
